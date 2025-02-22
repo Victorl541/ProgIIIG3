@@ -61,5 +61,17 @@ abuelaMaternaDe(X, Y):-
 abueloMaternoDe(X, Y):- 
     esHombre(X), esPadreDe(X, Z) , esMadre(Z, Y).
 
-sonHermanos(X, Y):-
-    (esHijo(X, Z) , esHijo(X, W)) , (esHijo(Y, Z) , esHijo(Y, W)) , (X \= Y).
+esHermanaDe(X, Y):-
+    esMujer(X), esPadreDe(P, X) , esPadreDe(P, Y) , esMadre(M, X) , esMadre(M, Y) , X \= Y.
+esHermanoDe(X, Y):-
+    esHombre(X) , esPadreDe(P, X) , esPadreDe(P, Y) , esMadre(M, X) , esMadre(M, Y) , X \= Y.                                                                  
+
+esTioDe(X, Y):-
+    esHermanoDe(X, P) , esPadreDe(P, Y).
+esTioDe(X, Y):-
+    esHermanoDe(X, M) , esMadre(M, Y).
+
+esTiaDe(X, Y):-
+    esHermanaDe(X, P) , esPadreDe(P, Y).
+esTiaDe(X, Y):-
+    esHermanaDe(X, M) , esMadre(M, Y).
