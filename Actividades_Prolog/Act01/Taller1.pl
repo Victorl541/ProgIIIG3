@@ -1,3 +1,5 @@
+%1)---Hechos para la definición de personas en los Simpson y sus relaciones familiares ---
+
 esHombre(bart).
 esHombre(homero).
 esHombre(abrajam).
@@ -50,6 +52,8 @@ esHijo(patty, clancy).
 esHijo(selma, clancy).
 esHijo(selma, jacqueline).
 
+% --- Reglas para las relaciones familiares ---
+
 
 abueloPaternoDe(X, Y):- 
     esHombre(X), esPadreDe(X, Z) , esPadreDe(Z, Y).
@@ -91,3 +95,28 @@ esPrimaDe(X, Y):-
     esMujer(X), sonPrimos(X, Y).
 esPrimoDe(X, Y):-
     esHombre(X), sonPrimos(X, Y).
+    
+
+%---------------------------------------------------------------------------------------------
+
+
+
+%2) ---Hechos del enunciado entregados:
+
+esHostil(coreaDelSur).
+esEstadoUnidense(coronelWest).
+vendioArmasA(coronelWest, coreaDelSur).
+
+%---La regla sera la ley que se nos indica en el inicio del enunciado quien determinara veredicto
+% por los hechos actuales---
+
+esCriminal(X, Y):-
+    esEstadoUnidense(X), vendioArmasA(X, Y), esHostil(Y).
+
+
+
+
+
+
+
+    
