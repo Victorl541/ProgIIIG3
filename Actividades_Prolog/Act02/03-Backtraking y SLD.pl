@@ -13,3 +13,8 @@ conectadoA(regina, winnipeg, 4).
 
 conectadoA(saskatoon, calgary, 9).
 conectadoA(saskatoon, winnipeg, 4).
+
+
+%---Regla para determinar si existe una conexion entre X y Y---
+
+estaConectado(X, Y):- conectadoA(X, Y, _).
