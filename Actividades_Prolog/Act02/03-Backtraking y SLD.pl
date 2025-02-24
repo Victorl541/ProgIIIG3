@@ -25,3 +25,8 @@ tieneArista(X):-
 
 costoDeIrA(X, Z, Y, Costo):-
     conectadoA(X, Y, C1) , conectadoA(Y, Z, C2) , Costo is C1 + C2.
+
+%---Regla para saber si hay un camino entre dos nodos---
+
+caminoDe(X, Y):- conectadoA(X, Y,_).
+caminoDe(X, Y):- conectadoA(X, Z,_) , caminoDe(Z, Y).  
