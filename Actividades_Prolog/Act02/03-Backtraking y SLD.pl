@@ -19,3 +19,9 @@ conectadoA(saskatoon, winnipeg, 4).
 
 tieneArista(X):-
     conectadoA(X, _, _).
+
+
+%---Regla para determinar el costo de ir de X a F pasando por Y---
+
+costoDeIrA(X, Z, Y, Costo):-
+    conectadoA(X, Y, C1) , conectadoA(Y, Z, C2) , Costo is C1 + C2.
