@@ -15,6 +15,7 @@ conectadoA(saskatoon, calgary, 9).
 conectadoA(saskatoon, winnipeg, 4).
 
 
-%---Regla para determinar si existe una conexion entre X y Y---
+%---Regla para determinar si un nodo tiene o no tiene aristas---
 
-estaConectado(X, Y):- conectadoA(X, Y, _).
+tieneArista(X):-
+    conectadoA(X, _, _).
