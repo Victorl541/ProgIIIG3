@@ -58,7 +58,14 @@ esTiaDe(X, Y) :- esHermanaDe(X, P), esPadreDe(P, Y).
 esTiaDe(X, Y) :- esHermanaDe(X, M), esMadre(M, Y).
 
 
+sonPrimos(X, Y) :- esPadreDe(P1, X), esPadreDe(P2, Y), esHermanoDe(P1, P2), X \= Y.
+sonPrimos(X, Y) :- esMadre(M1, X), esMadre(M2, Y), esHermanaDe(M1, M2), X \= Y.
+sonPrimos(X, Y) :- esPadreDe(P, X), esMadre(M, Y), esHermanoDe(P, M), X \= Y.
+sonPrimos(X, Y) :- esMadre(M, X), esPadreDe(P, Y), esHermanaDe(M, P), X \= Y.
 
+
+esPrimoDe(X, Y) :- esHombre(Hombres), member(X, Hombres), sonPrimos(X, Y).
+esPrimaDe(X, Y) :- esMujer(Mujeres), member(X, Mujeres), sonPrimos(X, Y).
 
 
 
