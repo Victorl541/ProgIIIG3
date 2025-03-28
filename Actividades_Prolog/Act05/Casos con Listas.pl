@@ -14,3 +14,33 @@ esMadre([madre(marge, lisa), madre(marge, bart), madre(marge, maggie), madre(sel
     madre(mona, homero), madre(mona, herbert)
 ]).
 
+
+% --- Reglas --- 
+
+
+esPadreDe(P, Hijo) :- esPadre(Lista), member(padre(P, Hijo), Lista).
+esMadre(M, Hijo) :- esMadre(Lista), member(madre(M, Hijo), Lista).
+
+
+abueloPaternoDe(X, Y) :- 
+    esHombre(Hombres), member(X, Hombres),
+    esPadreDe(X, Z), esPadreDe(Z, Y).
+
+
+abuelaPaternaDe(X, Y) :- 
+    esMujer(Mujeres), member(X, Mujeres),
+    esMadre(X, Z), esPadreDe(Z, Y).
+
+
+abueloMaternoDe(X, Y) :- 
+    esHombre(Hombres), member(X, Hombres),
+    esPadreDe(X, Z), esMadre(Z, Y).
+
+
+abuelaMaternaDe(X, Y) :- 
+    esMujer(Mujeres), member(X, Mujeres),
+    esMadre(X, Z), esMadre(Z, Y).
+
+
+
+    
