@@ -42,5 +42,24 @@ abuelaMaternaDe(X, Y) :-
     esMadre(X, Z), esMadre(Z, Y).
 
 
+esHermanoDe(X, Y) :- 
+    esHombre(Hombres), member(X, Hombres),
+    esPadreDe(P, X), esPadreDe(P, Y), esMadre(M, X), esMadre(M, Y), X \= Y.
+
+esHermanaDe(X, Y) :- 
+    esMujer(Mujeres), member(X, Mujeres),
+    esPadreDe(P, X), esPadreDe(P, Y), esMadre(M, X), esMadre(M, Y), X \= Y.
+
+
+esTioDe(X, Y) :- esHermanoDe(X, P), esPadreDe(P, Y).
+esTioDe(X, Y) :- esHermanoDe(X, M), esMadre(M, Y).
+
+esTiaDe(X, Y) :- esHermanaDe(X, P), esPadreDe(P, Y).
+esTiaDe(X, Y) :- esHermanaDe(X, M), esMadre(M, Y).
+
+
+
+
+
 
     
