@@ -22,3 +22,9 @@ esMujer(X) :- personas(Lista), member(persona(X, mujer, _, _), Lista).
 
 esPadreDe(P, Hijo) :- personas(Lista), member(persona(Hijo, _, P, _), Lista).
 esMadreDe(M, Hijo) :- personas(Lista), member(persona(Hijo, _, _, M), Lista).
+
+abueloPaternoDe(X, Y) :- esHombre(X), esPadreDe(X, Z), esPadreDe(Z, Y).
+abuelaPaternaDe(X, Y) :- esMujer(X), esMadreDe(X, Z), esPadreDe(Z, Y).
+
+abueloMaternoDe(X, Y) :- esHombre(X), esPadreDe(X, Z), esMadreDe(Z, Y).
+abuelaMaternaDe(X, Y) :- esMujer(X), esMadreDe(X, Z), esMadreDe(Z, Y).
